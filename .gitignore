@@ -12,3 +12,6 @@
 
 # ignore elpa install path
 elpa
+
+eshell
+smex-items
