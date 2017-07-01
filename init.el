@@ -1,8 +1,5 @@
 (defconst emacs-start-time (current-time))
 
-;; Necessary
-;(package-initialize)
-
 (eval-and-compile
   ;; Mac : change modifiers
   (when (string= system-type "darwin")
@@ -30,19 +27,23 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(package-enable-at-startup nil)
+ '(package-selected-packages (quote (use-package smex magit)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(cursor ((t (:background "red")))))
 
 ;; The use-package stuff
 (use-package package
   :defer t
   :config
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/")))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  ) ;; package
 
 (use-package smex
   :bind (("M-x" . smex))
