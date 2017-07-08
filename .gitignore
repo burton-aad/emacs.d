@@ -10,8 +10,5 @@
 # Undo-tree save-files
 *.~undo-tree
 
-# ignore elpa install path
-elpa
-
 eshell
 smex-items
