@@ -23,6 +23,9 @@
               (add-to-list 'load-path path))
             (directory-files
              (expand-file-name "elpa" user-emacs-directory) t "^[^.].*-[0-9-]+"))))
+
+  ;; 'y or n' au lieu de 'yes or no'
+  (defalias 'yes-or-no-p 'y-or-n-p)
   )
 
 ;; Custom settings
@@ -32,8 +35,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
+ '(display-time-24hr-format t)
+ '(display-time-mode t)
  '(package-enable-at-startup nil)
- '(package-selected-packages (quote (use-package smex magit)))
+ '(package-selected-packages (quote (evil powerline use-package smex magit)))
+ '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -42,11 +48,14 @@
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "red")))))
 
+
 ;; The use-package stuff
 (use-package package
   :defer t
   :config
+  ;; (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  ;; (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/") t)
   ) ;; package
 
 (use-package smex
@@ -68,7 +77,8 @@
   ) ;; ibuffer
 
 (use-package magit
-  :bind (("C-x g s" . magit-status))
+  :bind (("C-x g s" . magit-status)
+         ("C-x g l" . magit-log))
   ) ;; magit
 
 ;; Gives the loading time
