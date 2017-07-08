@@ -81,7 +81,26 @@
          ("C-x g l" . magit-log))
   ) ;; magit
 
-;; Gives the loading time
+(use-package evil
+  :defer t
+  :init
+  (defun evil-mode ()
+    "This is only a dummy function to make it available while not autoloaded.
+
+In the evil package the evil-mode function is not autoload so it is not
+available through the use-package :commands keyword. So I made this
+function to load evil and call the evil-mode so the evil package loading
+can be defer.
+
+Once called, this function will be replaced with the one from the evil package."
+    (interactive)
+    (require 'evil)
+    (evil-mode))
+  ) ;; evil
+
+
+
+;; End of init : Gives the loading time
 (when window-system
   (let ((elapsed (float-time (time-subtract (current-time)
                                             emacs-start-time))))
