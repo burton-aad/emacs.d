@@ -7,18 +7,22 @@
     (setq mac-command-modifier 'meta)
     (setq mac-right-command-modifier 'super))
 
-  ;; Put package install path into load path
-  (mapc (lambda (path)
-	  (add-to-list 'load-path path))
-	(directory-files
-	 (expand-file-name "elpa" user-emacs-directory) t "^[^.].*-[0-9-]+"))
-
+  ;; Get the use-package command
+  (add-to-list 'load-path (expand-file-name "use-package" user-emacs-directory))
   (require 'use-package)
-  (when nil
-    ;; Set t to install packages automatically
-    (require 'package)
-    (package-initialize)
-    (setq use-package-always-ensure t))
+
+  ;; Set t to install packages automatically
+  (if nil
+      (progn
+        (require 'package)
+        (package-initialize)
+        (setq use-package-always-ensure t))
+    (progn
+      ;; Put package install path into load path
+      (mapc (lambda (path)
+              (add-to-list 'load-path path))
+            (directory-files
+             (expand-file-name "elpa" user-emacs-directory) t "^[^.].*-[0-9-]+"))))
   )
 
 ;; Custom settings
