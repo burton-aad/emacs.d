@@ -2,6 +2,11 @@
 
 (prefer-coding-system 'utf-8-unix)
 
+;; Setting default face
+(set-face-attribute 'default nil
+     :foreground "white"
+     :background "black")
+
 (eval-and-compile
   ;; Mac : change modifiers
   (when (string= system-type "darwin")
