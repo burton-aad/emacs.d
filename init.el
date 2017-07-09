@@ -36,6 +36,13 @@
 
   ;; Windmove modifier
   (windmove-default-keybindings 'meta)
+
+  ;; La face est safe si c'est une liste de liste d'association
+  ;; de chaîne de caractères
+  (put 'org-todo-keyword-faces 'safe-local-variable
+       (lambda (val)
+         (some 'stringp (mapcar 'car val))
+         (some 'stringp (mapcar 'cdr val))))
   )
 
 ;; Custom settings
