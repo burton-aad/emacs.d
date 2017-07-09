@@ -86,6 +86,23 @@
   ;; (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/") t)
   ) ;; package
 
+(use-package cc-mode
+  :ensure nil ;; use internal package
+  :defer t
+  :init
+  (setq c-basic-offset tab-width)
+  ) ;; cc-mode
+
+(use-package elisp-mode
+  :ensure nil ;; use internal package
+  :defer t
+  :config
+  (defun my/elisp-mode-hook ()
+    (setq indent-tabs-mode nil))
+
+  (add-hook 'emacs-lisp-mode-hook 'my/elisp-mode-hook)
+  ) ;; elisp-mode
+
 (use-package smex
   :bind (("M-x" . smex))
   ) ;; smex
