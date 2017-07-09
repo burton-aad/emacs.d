@@ -152,13 +152,16 @@
   (setq powerline-default-separator (quote wave))
   (setq powerline-display-mule-info t)
   (setq powerline-height nil)
-  (custom-set-faces
-   '(mode-line ((t (:background "dark slate blue" :foreground "gray" :box (:line-width -1 :style released-button)))))
-   '(powerline-active1 ((t (:inherit mode-line :background "navy"))))
-   '(powerline-active2 ((t (:inherit mode-line :background "slate blue")))))
 
   :config
   (powerline-center-theme)
+  (set-face-attribute 'mode-line nil
+		      :background "dark slate blue"
+		      :foreground "gray")
+  (set-face-attribute 'powerline-active1 nil
+                      :background "navy")
+  (set-face-attribute 'powerline-active2 nil
+                      :background "slate blue")
   ) ;; powerline
 
 (use-package evil
