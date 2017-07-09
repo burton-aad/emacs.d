@@ -59,9 +59,10 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (macrostep cua evil powerline use-package smex magit)))
+	(macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
+ '(tab-width 4)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
