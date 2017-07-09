@@ -26,6 +26,9 @@
 
   ;; 'y or n' au lieu de 'yes or no'
   (defalias 'yes-or-no-p 'y-or-n-p)
+
+  ;; Windmove modifier
+  (windmove-default-keybindings 'meta)
   )
 
 ;; Custom settings
@@ -34,12 +37,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
  '(blink-cursor-mode nil)
+ '(cua-enable-cua-keys nil)
+ '(cua-mode t nil (cua-base))
  '(display-time-24hr-format t)
  '(display-time-mode t)
  '(package-enable-at-startup nil)
  '(package-selected-packages (quote (evil powerline use-package smex magit)))
- '(show-paren-mode t)
+ '(ring-bell-function (quote ignore))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
