@@ -42,8 +42,6 @@
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
  '(blink-cursor-mode nil)
- '(cua-enable-cua-keys nil)
- '(cua-mode t nil (cua-base))
  '(display-time-24hr-format t)
  '(display-time-mode t)
  '(package-enable-at-startup nil)
@@ -75,7 +73,19 @@
 (use-package paren
   :defer 2
   :config
-  (show-paren-mode 1))
+  (show-paren-mode 1)
+  ) ;; paren
+
+(use-package cua-mode
+  :ensure nil
+
+  ;; The cua-mode is set at the first call t C-RET.
+  ;; So the first time it have to be called twice.
+  :bind (("C-<return>" . cua-mode))
+
+  :init
+  (setq cua-enable-cua-keys nil)
+  ) ;; cua
 
 (use-package ibuffer
   :bind (("C-x C-b" . ibuffer))
