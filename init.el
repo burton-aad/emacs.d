@@ -29,6 +29,9 @@
 
   ;; Windmove modifier
   (windmove-default-keybindings 'meta)
+
+  ;; Variables pour retirer les avertissements sur certaines fonctions
+  (put 'narrow-to-region 'disabled nil)
   )
 
 ;; Custom settings
