@@ -31,9 +31,6 @@
 
   ;; Windmove modifier
   (windmove-default-keybindings 'meta)
-
-  ;; Variables pour retirer les avertissements sur certaines fonctions
-  (put 'narrow-to-region 'disabled nil)
   )
 
 ;; Custom settings
@@ -59,6 +56,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "red")))))
+
+;; Variables pour retirer les avertissements sur certaines fonctions
+(put 'narrow-to-region 'disabled nil)
+
+
 
 
 ;; The use-package stuff
@@ -97,10 +99,10 @@
   :config
   ;; Switching to ibuffer puts the cursor on the most recent buffer
   (defadvice ibuffer (around ibuffer-point-to-most-recent) ()
-	     "Open ibuffer with cursor pointed to most recent buffer name"
-	     (let ((recent-buffer-name (buffer-name)))
-	       ad-do-it
-	       (ibuffer-jump-to-buffer recent-buffer-name)))
+             "Open ibuffer with cursor pointed to most recent buffer name"
+             (let ((recent-buffer-name (buffer-name)))
+               ad-do-it
+               (ibuffer-jump-to-buffer recent-buffer-name)))
   (ad-activate 'ibuffer)
 
   ; Test de personalisation pour ibuffer
@@ -126,7 +128,6 @@
 
   :config
   (powerline-center-theme)
-
   ) ;; powerline
 
 (use-package evil
