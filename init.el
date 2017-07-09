@@ -108,6 +108,23 @@
          ("C-x g l" . magit-log))
   ) ;; magit
 
+(use-package powerline
+  :if (string= system-type "windows-nt")
+
+  :init
+  (setq powerline-default-separator (quote wave))
+  (setq powerline-display-mule-info t)
+  (setq powerline-height nil)
+  (custom-set-faces
+   '(mode-line ((t (:background "dark slate blue" :foreground "gray" :box (:line-width -1 :style released-button)))))
+   '(powerline-active1 ((t (:inherit mode-line :background "navy"))))
+   '(powerline-active2 ((t (:inherit mode-line :background "slate blue")))))
+
+  :config
+  (powerline-center-theme)
+
+  ) ;; powerline
+
 (use-package evil
   :defer t
   :init
