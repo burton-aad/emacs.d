@@ -99,7 +99,7 @@
 	       (ibuffer-jump-to-buffer recent-buffer-name)))
   (ad-activate 'ibuffer)
 
-  ; Separate file for testing ibuffer
+  ; Test de personalisation pour ibuffer
   ;; (load "~/.emacs.d/ibuffer-test.el")
   ) ;; ibuffer
 
