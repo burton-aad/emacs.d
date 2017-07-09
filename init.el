@@ -86,6 +86,8 @@
 	       (ibuffer-jump-to-buffer recent-buffer-name)))
   (ad-activate 'ibuffer)
 
+  ; Separate file for testing ibuffer
+  ;; (load "~/.emacs.d/ibuffer-test.el")
   ) ;; ibuffer
 
 (use-package magit
