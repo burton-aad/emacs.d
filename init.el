@@ -147,6 +147,17 @@ Once called, this function will be replaced with the one from the evil package."
     (evil-mode))
   ) ;; evil
 
+(use-package yasnippet
+  :defer t
+  :commands yas-minor-mode
+
+  :init
+  (add-hook 'org-mode-hook #'yas-minor-mode)
+
+  :config
+  (yas-reload-all)
+  ) ;; yasnippet
+
 (use-package macrostep
   :defer t
   :commands macrostep-expand

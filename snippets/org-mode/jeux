@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: ListeJeux
+# expand-env: ((yas-indent-line 'fixed))
+# key: jeux
+# --
+** ${1:Title}
+   :PROPERTIES:
+   :SCES:     ${2:00000$(format "%05d" (string-to-number yas-text))}
+   :END:
+   - Cd :: $5
+   - Manuel :: $4
+   - Boîte :: $3
+$0
