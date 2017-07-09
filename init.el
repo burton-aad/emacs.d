@@ -41,6 +41,7 @@
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
  '(blink-cursor-mode nil)
+ '(delete-selection-mode t)
  '(display-time-24hr-format t)
  '(display-time-mode t)
  '(package-enable-at-startup nil)
