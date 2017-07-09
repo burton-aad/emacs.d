@@ -62,6 +62,11 @@
   :bind (("M-x" . smex))
   ) ;; smex
 
+(use-package paren
+  :defer 2
+  :config
+  (show-paren-mode 1))
+
 (use-package ibuffer
   :bind (("C-x C-b" . ibuffer))
 
