@@ -1,5 +1,7 @@
 (defconst emacs-start-time (current-time))
 
+(prefer-coding-system 'utf-8-unix)
+
 (eval-and-compile
   ;; Mac : change modifiers
   (when (string= system-type "darwin")
