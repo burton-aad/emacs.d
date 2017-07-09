@@ -46,6 +46,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages (quote (evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
+ '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
