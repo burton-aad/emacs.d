@@ -47,7 +47,9 @@
  '(display-time-24hr-format t)
  '(display-time-mode t)
  '(package-enable-at-startup nil)
- '(package-selected-packages (quote (evil powerline use-package smex magit)))
+ '(package-selected-packages
+   (quote
+    (macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
@@ -143,6 +145,12 @@ Once called, this function will be replaced with the one from the evil package."
     (require 'evil)
     (evil-mode))
   ) ;; evil
+
+(use-package macrostep
+  :defer t
+  :commands macrostep-expand
+  ) ;; macrostep
+
 
 
 
