@@ -148,7 +148,18 @@
 
 (use-package magit
   :bind (("C-x g s" . magit-status)
-         ("C-x g l" . magit-log))
+         ("C-x g l" . magit-log)
+         :map magit-log-mode-map
+         ("C-x C-f" . my/magit-find-file)
+         ("C-x C-S-f" . magit-find-file))
+
+  :config
+  (defun my/magit-find-file ()
+    "Equivalent of magit-find-file but does not ask for revision and use the default one."
+    (interactive)
+    (let* ((rev (magit-branch-or-commit-at-point))
+           (file (magit-read-file-from-rev rev "Find file")))
+      (switch-to-buffer (magit-find-file-noselect rev file))))
   ) ;; magit
 
 (use-package powerline
