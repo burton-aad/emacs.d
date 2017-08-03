@@ -109,6 +109,17 @@
   (add-hook 'emacs-lisp-mode-hook 'my/elisp-mode-hook)
   ) ;; elisp-mode
 
+(use-package smerge-mode
+  :ensure nil ;; use internal package
+  :defer t
+  :bind (:map smerge-mode-map
+              ("M-n" . smerge-next)
+              ("M-p" . smerge-prev)
+              ("M-m" . smerge-keep-mine)
+              ("M-o" . smerge-keep-other)
+              ("M-a" . smerge-keep-all))
+  ) ;; smerge-mode
+
 (use-package smex
   :bind (("M-x" . smex))
   ) ;; smex
