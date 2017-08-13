@@ -70,7 +70,6 @@
 
 
 (use-package org
-  :ensure nil ;; internal package
   :mode ("\\.org\\'" . org-mode)
 
   :config
@@ -93,14 +92,12 @@
   ) ;; package
 
 (use-package cc-mode
-  :ensure nil ;; use internal package
   :defer t
   :init
   (setq c-basic-offset tab-width)
   ) ;; cc-mode
 
 (use-package elisp-mode
-  :ensure nil ;; use internal package
   :defer t
   :init
   (defun my/elisp-mode-hook ()
@@ -110,7 +107,6 @@
   ) ;; elisp-mode
 
 (use-package smerge-mode
-  :ensure nil ;; use internal package
   :defer t
   :bind (:map smerge-mode-map
               ("M-n" . smerge-next)
@@ -131,8 +127,6 @@
   ) ;; paren
 
 (use-package cua-mode
-  :ensure nil
-
   ;; The cua-mode is set at the first call t C-RET.
   ;; So the first time it have to be called twice.
   :bind (("C-<return>" . cua-mode))
