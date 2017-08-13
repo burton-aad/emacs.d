@@ -105,6 +105,7 @@
   ) ;; cc-mode
 
 (use-package elisp-mode
+  :ensure nil
   :defer t
   :init
   (defun my/elisp-mode-hook ()
@@ -134,6 +135,8 @@
   ) ;; paren
 
 (use-package cua-mode
+  :ensure nil
+
   ;; The cua-mode is set at the first call t C-RET.
   ;; So the first time it have to be called twice.
   :bind (("C-<return>" . cua-mode))
