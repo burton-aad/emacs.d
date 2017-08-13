@@ -35,7 +35,14 @@
 
   ;; Windmove modifier
   (windmove-default-keybindings 'meta)
-  )
+
+  ;; pipe the full buffer if no region is selected
+  (define-advice shell-command-on-region (:around (sh-reg start end &rest r) scr-on-buffer)
+    "If no region is active, call the shell-command-on-region on the all buffer"
+    (if (region-active-p)
+        (apply sh-reg start end r)
+      (apply sh-reg (point-min) (point-max) r)))
+  ) ;; eval-and-compile
 
 ;; Custom settings
 (custom-set-variables
