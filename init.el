@@ -48,6 +48,7 @@
  '(delete-selection-mode t)
  '(display-time-24hr-format t)
  '(display-time-mode t)
+ '(mouse-yank-at-point t)
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
@@ -101,7 +102,7 @@
 (use-package elisp-mode
   :ensure nil ;; use internal package
   :defer t
-  :config
+  :init
   (defun my/elisp-mode-hook ()
     (setq indent-tabs-mode nil))
 
