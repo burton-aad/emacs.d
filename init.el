@@ -19,17 +19,16 @@
   (require 'use-package)
 
   ;; Set t to install packages automatically
-  (if nil
-      (progn
-        (require 'package)
-        (package-initialize)
-        (setq use-package-always-ensure t))
-    (progn
-      ;; Put package install path into load path
-      (mapc (lambda (path)
-              (add-to-list 'load-path path))
-            (directory-files
-             (expand-file-name "elpa" user-emacs-directory) t "^[^.].*-[0-9-]+"))))
+  (let ((elpa (expand-file-name "elpa" user-emacs-directory)))
+	(if (not (file-exists-p elpa))
+		(progn
+		  (require 'package)
+		  (package-initialize)
+		  (setq use-package-always-ensure t))
+	  (progn
+		;; Put package install path into load path
+		(mapc (lambda (path) (add-to-list 'load-path path))
+			  (directory-files elpa t "^[^.].*-[0-9-]+")))))
 
   ;; 'y or n' au lieu de 'yes or no'
   (defalias 'yes-or-no-p 'y-or-n-p)
