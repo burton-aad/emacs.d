@@ -18,6 +18,9 @@
     (setq mac-command-modifier 'meta)
     (setq mac-right-command-modifier 'super))
 
+  (when (= emacs-major-version 24)
+	(load (expand-file-name "init24.el" user-emacs-directory)))
+
   ;; Get the use-package command
   (add-to-list 'load-path (expand-file-name "use-package" user-emacs-directory))
   (require 'use-package)
