@@ -8,6 +8,10 @@
      :background "black")
 
 (eval-and-compile
+  ;; Windows : change modifiers
+  (when (string= system-type "windows-nt")
+    (setq inhibit-compacting-font-caches t))
+
   ;; Mac : change modifiers
   (when (string= system-type "darwin")
     (setq mac-option-modifier 'none)
