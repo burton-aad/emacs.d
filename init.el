@@ -64,6 +64,8 @@
     (auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
+ '(scroll-error-top-bottom t)
+ '(scroll-preserve-screen-position t)
  '(tab-width 4)
  '(tool-bar-mode nil))
 (custom-set-faces
