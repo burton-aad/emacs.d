@@ -66,7 +66,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (auto-complete macrostep cua evil powerline use-package smex magit)))
+    (ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -249,7 +249,11 @@ Once called, this function will be replaced with the one from the evil package."
   ;; (ac-set-trigger-key "M-/")
   ) ;; auto-complete
 
-
+(use-package ztree
+  :commands (ztree-dir ztree-diff)
+  :config
+  (setq ztree-dir-move-focus t)
+  ) ;; ztree
 
 ;; End of init : Gives the loading time
 (when window-system
