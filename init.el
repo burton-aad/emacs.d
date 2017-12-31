@@ -44,6 +44,10 @@
     (if (region-active-p)
         (apply sh-reg start end r)
       (apply sh-reg (point-min) (point-max) r)))
+
+  ;; Pas d'écran d'accueil si on ouvre un fichier
+  (when (> (length command-line-args) 1)
+    (setq inhibit-splash-screen t))
   ) ;; eval-and-compile
 
 ;; Custom settings
@@ -57,6 +61,7 @@
  '(delete-selection-mode t)
  '(display-time-24hr-format t)
  '(display-time-mode t)
+ '(ediff-split-window-function (quote split-window-horizontally))
  '(mouse-yank-at-point t)
  '(package-enable-at-startup nil)
  '(package-selected-packages
