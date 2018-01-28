@@ -66,7 +66,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -254,6 +254,13 @@ Once called, this function will be replaced with the one from the evil package."
   :config
   (setq ztree-dir-move-focus t)
   ) ;; ztree
+
+(use-package web-mode
+  :mode "\\.html\\'"
+  :mode "\\.php\\'"
+  :config
+  (setq web-mode-enable-auto-indentation nil)
+  ) ;; web-mode
 
 ;; End of init : Gives the loading time
 (when window-system
