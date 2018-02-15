@@ -66,7 +66,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -135,7 +135,10 @@
   ) ;; smerge-mode
 
 (use-package smex
+  :after (ido-vertical-mode)
   :bind (("M-x" . smex))
+  :config
+  (require 'ido-vertical-mode)
   ) ;; smex
 
 (use-package paren
@@ -261,6 +264,13 @@ Once called, this function will be replaced with the one from the evil package."
   :config
   (setq web-mode-enable-auto-indentation nil)
   ) ;; web-mode
+
+(use-package ido-vertical-mode
+  :defer t
+  :config
+  (ido-vertical-mode 1)
+  (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
+  ) ;; ido-vertical-mode
 
 ;; End of init : Gives the loading time
 (when window-system
