@@ -94,8 +94,9 @@
   ;; de chaîne de caractères
   (put 'org-todo-keyword-faces 'safe-local-variable
        (lambda (val)
-         (and (some 'stringp (mapcar 'car val))
-              (some 'stringp (mapcar 'cdr val)))))
+         (and (every 'stringp (mapcar 'car val))
+              (every 'stringp (mapcar 'cdr val)))))
+  (custom-set-variables '(org-support-shift-select t))
   ) ;; org
 
 
