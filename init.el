@@ -115,6 +115,14 @@
   (setq c-basic-offset tab-width)
   ) ;; cc-mode
 
+(use-package sh-mode
+  :defer t
+  :init
+  (setq sh-basic-offset 2)
+  (setq sh-indentation 2)
+  (add-hook 'sh-mode-hook (lambda () (setq indent-tabs-mode nil)))
+  ) ;; sh-mode
+
 (use-package elisp-mode
   :ensure nil
   :defer t
