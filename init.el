@@ -96,7 +96,9 @@
        (lambda (val)
          (and (every 'stringp (mapcar 'car val))
               (every 'stringp (mapcar 'cdr val)))))
-  (custom-set-variables '(org-support-shift-select t))
+  (custom-set-variables
+   '(org-support-shift-select t)
+   '(org-src-fontify-natively t))
   ) ;; org
 
 
