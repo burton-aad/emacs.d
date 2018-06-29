@@ -66,7 +66,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-	(yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -282,6 +282,17 @@ Once called, this function will be replaced with the one from the evil package."
   (ido-vertical-mode 1)
   (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
   ) ;; ido-vertical-mode
+
+(use-package auctex
+  :defer t
+  :init
+  ;; Depuis le manuel de auctex.
+  ;; preview-latex n'est pas présent (peut-être été renommé en preview ?)
+  (load "auctex.el" nil t t)
+  ; (load "preview-latex.el" nil t t)
+  ) ;; auctex
+
+
 
 ;; End of init : Gives the loading time
 (when window-system
