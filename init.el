@@ -14,7 +14,7 @@
     (setq mac-right-command-modifier 'super))
 
   (when (= emacs-major-version 24)
-	(load (expand-file-name "init24.el" user-emacs-directory)))
+    (load (expand-file-name "init24.el" user-emacs-directory)))
 
   ;; Get the use-package command
   (add-to-list 'load-path (expand-file-name "use-package" user-emacs-directory))
@@ -22,15 +22,15 @@
 
   ;; Set t to install packages automatically
   (let ((elpa (expand-file-name "elpa" user-emacs-directory)))
-	(if (not (file-exists-p elpa))
-		(progn
-		  (require 'package)
-		  (package-initialize)
-		  (setq use-package-always-ensure t))
-	  (progn
-		;; Put package install path into load path
-		(mapc (lambda (path) (add-to-list 'load-path path))
-			  (directory-files elpa t "^[^.].*-[0-9-]+")))))
+    (if (not (file-exists-p elpa))
+        (progn
+          (require 'package)
+          (package-initialize)
+          (setq use-package-always-ensure t))
+      (progn
+        ;; Put package install path into load path
+        (mapc (lambda (path) (add-to-list 'load-path path))
+              (directory-files elpa t "^[^.].*-[0-9-]+")))))
 
   ;; 'y or n' au lieu de 'yes or no'
   (defalias 'yes-or-no-p 'y-or-n-p)
@@ -211,8 +211,8 @@
   :config
   (powerline-center-theme)
   (set-face-attribute 'mode-line nil
-		      :background "dark slate blue"
-		      :foreground "gray")
+                      :background "dark slate blue"
+                      :foreground "gray")
   (set-face-attribute 'powerline-active1 nil
                       :background "navy")
   (set-face-attribute 'powerline-active2 nil
