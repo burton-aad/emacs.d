@@ -66,7 +66,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -292,6 +292,10 @@ Once called, this function will be replaced with the one from the evil package."
   ; (load "preview-latex.el" nil t t)
   ) ;; auctex
 
+(use-package yaml-mode
+  :mode "\\.yaml\\'"
+  :mode "\\.yml\\'"
+  ) ;; yaml-mode
 
 
 ;; End of init : Gives the loading time
