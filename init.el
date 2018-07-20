@@ -118,6 +118,7 @@
   ) ;; cc-mode
 
 (use-package sh-mode
+  :ensure nil
   :defer t
   :init
   (setq sh-basic-offset 2)
