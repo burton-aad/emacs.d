@@ -66,7 +66,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -296,6 +296,11 @@ Once called, this function will be replaced with the one from the evil package."
   :mode "\\.yaml\\'"
   :mode "\\.yml\\'"
   ) ;; yaml-mode
+
+(use-package expand-region
+  :bind (("C-=" . er/expand-region))
+  ) ;; expand-region
+
 
 
 ;; End of init : Gives the loading time
