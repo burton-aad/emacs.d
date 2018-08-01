@@ -85,23 +85,11 @@
 (put 'narrow-to-region 'disabled nil)
 
 
-
-(use-package org
-  :mode ("\\.org\\'" . org-mode)
-
-  :config
-  ;; La face est safe si c'est une liste de liste d'association
-  ;; de chaîne de caractères
-  (put 'org-todo-keyword-faces 'safe-local-variable
-       (lambda (val)
-         (and (every 'stringp (mapcar 'car val))
-              (every 'stringp (mapcar 'cdr val)))))
-  (setq org-support-shift-select t)
-  (setq org-src-fontify-natively t)
-  ) ;; org
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; The use-package stuff
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package package
   :defer t
   :config
@@ -110,12 +98,8 @@
   ;; (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/") t)
   ) ;; package
 
-(use-package cc-mode
-  :defer t
-  :init
-  (setq c-basic-offset tab-width)
-  ) ;; cc-mode
 
+;; Paquets internes de emacs (pas de 'ensure' pour ne pas les modifier)
 (use-package sh-mode
   :ensure nil
   :defer t
@@ -134,6 +118,39 @@
 
   (add-hook 'emacs-lisp-mode-hook 'my/elisp-mode-hook)
   ) ;; elisp-mode
+
+(use-package cua-mode
+  :ensure nil
+
+  ;; The cua-mode is set at the first call to C-RET.
+  ;; So the first time it have to be called twice.
+  :bind (("C-<return>" . cua-mode))
+
+  :init
+  (setq cua-enable-cua-keys nil)
+  ) ;; cua
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package org
+  :mode ("\\.org\\'" . org-mode)
+
+  :config
+  ;; La face est safe si c'est une liste de liste d'association
+  ;; de chaîne de caractères
+  (put 'org-todo-keyword-faces 'safe-local-variable
+       (lambda (val)
+         (and (every 'stringp (mapcar 'car val))
+              (every 'stringp (mapcar 'cdr val)))))
+  (setq org-support-shift-select t)
+  (setq org-src-fontify-natively t)
+  ) ;; org
+
+(use-package cc-mode
+  :defer t
+  :init
+  (setq c-basic-offset tab-width)
+  ) ;; cc-mode
 
 (use-package smerge-mode
   :defer t
@@ -171,17 +188,6 @@
   :config
   (show-paren-mode 1)
   ) ;; paren
-
-(use-package cua-mode
-  :ensure nil
-
-  ;; The cua-mode is set at the first call to C-RET.
-  ;; So the first time it have to be called twice.
-  :bind (("C-<return>" . cua-mode))
-
-  :init
-  (setq cua-enable-cua-keys nil)
-  ) ;; cua
 
 (use-package ibuffer
   :bind (("C-x C-b" . ibuffer))
