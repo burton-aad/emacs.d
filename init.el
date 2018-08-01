@@ -130,6 +130,14 @@
   (setq cua-enable-cua-keys nil)
   ) ;; cua
 
+(use-package help-mode
+  :ensure nil
+  :defer t
+  :bind (:map help-mode-map
+              ("f" . help-go-forward)
+              ("b" . help-go-back))
+  ) ;; help-mode
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package org
