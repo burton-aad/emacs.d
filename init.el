@@ -152,6 +152,11 @@
               (every 'stringp (mapcar 'cdr val)))))
   (setq org-support-shift-select t)
   (setq org-src-fontify-natively t)
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((emacs-lisp . t)
+                                 (awk . t)
+                                 (python . t)
+                                 (shell . t)))
   ) ;; org
 
 (use-package cc-mode
