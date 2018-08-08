@@ -157,6 +157,9 @@
                                  (awk . t)
                                  (python . t)
                                  (shell . t)))
+  (when (string= system-type "windows-nt")
+    ;; Lanceur python spécifique pour windows
+    (setq org-babel-python-command "py -3"))
   ) ;; org
 
 (use-package cc-mode
