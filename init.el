@@ -210,6 +210,7 @@
   ) ;; paren
 
 (use-package ibuffer
+  :if (version< "24.3" emacs-version)
   :bind (("C-x C-b" . ibuffer))
 
   :config
