@@ -13,6 +13,10 @@
     (setq mac-command-modifier 'meta)
     (setq mac-right-command-modifier 'super))
 
+
+  ;; Config spécifiques par machine
+  (load (expand-file-name "local-init.el" user-emacs-directory))
+
   (when (= emacs-major-version 24)
     (load (expand-file-name "emacs24-init.el" user-emacs-directory)))
 
