@@ -14,12 +14,6 @@
     (setq mac-right-command-modifier 'super))
 
 
-  ;; Config spécifiques par machine
-  (load (expand-file-name "local-init.el" user-emacs-directory))
-
-  (when (= emacs-major-version 24)
-    (load (expand-file-name "emacs24-init.el" user-emacs-directory)))
-
   ;; Get the use-package command
   (add-to-list 'load-path (expand-file-name "use-package" user-emacs-directory))
   (require 'use-package)
@@ -35,6 +29,12 @@
         ;; Put package install path into load path
         (mapc (lambda (path) (add-to-list 'load-path path))
               (directory-files elpa t "^[^.].*-[0-9-]+")))))
+
+  ;; Config spécifiques par machine
+  (load (expand-file-name "local-init.el" user-emacs-directory))
+
+  (when (= emacs-major-version 24)
+    (load (expand-file-name "emacs24-init.el" user-emacs-directory)))
 
   ;; 'y or n' au lieu de 'yes or no'
   (defalias 'yes-or-no-p 'y-or-n-p)
