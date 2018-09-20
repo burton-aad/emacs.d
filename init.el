@@ -193,6 +193,9 @@
   :defer t
   :config
   (flx-ido-mode 1)
+  ; enable flx highlight
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil)
   ) ;; flx-ido
 
 (use-package smex
