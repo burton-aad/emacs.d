@@ -102,6 +102,15 @@
   ;; (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/") t)
   ) ;; package
 
+(use-package el-get
+  :if (featurep 'package)
+  :init
+  (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+  :config
+  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+  (el-get 'sync (append '(el-get) (mapcar #'el-get-source-name el-get-sources)))
+  ) ; el-get
+
 
 ;; Paquets internes de emacs (pas de 'ensure' pour ne pas les modifier)
 (use-package sh-mode
