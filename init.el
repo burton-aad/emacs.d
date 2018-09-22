@@ -2,57 +2,57 @@
 
 (prefer-coding-system 'utf-8-unix)
 
-(eval-and-compile
-  ;; Windows : change modifiers
-  (when (string= system-type "windows-nt")
-    (setq inhibit-compacting-font-caches t))
+(pcase system-type
+  ;; Windows spécifique
+  ("windows-nt"
+   (setq inhibit-compacting-font-caches t))
+  ;; Mac spécifique
+  ("darwin"
+   (setq mac-option-modifier 'none)
+   (setq mac-command-modifier 'meta)
+   (setq mac-right-command-modifier 'super)))
 
-  ;; Mac : change modifiers
-  (when (string= system-type "darwin")
-    (setq mac-option-modifier 'none)
-    (setq mac-command-modifier 'meta)
-    (setq mac-right-command-modifier 'super))
 
+;; Get the use-package command
+(add-to-list 'load-path (expand-file-name "use-package" user-emacs-directory))
+(require 'use-package)
 
-  ;; Get the use-package command
-  (add-to-list 'load-path (expand-file-name "use-package" user-emacs-directory))
-  (require 'use-package)
-
-  ;; Set t to install packages automatically
-  (let ((elpa (expand-file-name "elpa" user-emacs-directory)))
-    (if (not (file-exists-p elpa))
-        (progn
-          (require 'package)
-          (package-initialize)
-          (setq use-package-always-ensure t))
+;; Les paquets s'installe automatiquement si le dossier elpa n'existe
+;; pas. Sinon le plugin 'package' n'est pas chargé pour accélérer
+;; le démarrage.
+(let ((elpa (expand-file-name "elpa" user-emacs-directory)))
+  (if (not (file-exists-p elpa))
       (progn
-        ;; Put package install path into load path
-        (mapc (lambda (path) (add-to-list 'load-path path))
-              (directory-files elpa t "^[^.].*-[0-9-]+")))))
+        (require 'package)
+        (package-initialize)
+        (setq use-package-always-ensure t))
+    (progn
+      ;; Put package install path into load path
+      (mapc (lambda (path) (add-to-list 'load-path path))
+            (directory-files elpa t "^[^.].*-[0-9-]+")))))
 
-  ;; Config spécifiques par machine
-  (load (expand-file-name "local-init.el" user-emacs-directory))
+;; Config spécifiques par machine
+(load (expand-file-name "local-init.el" user-emacs-directory))
 
-  (when (= emacs-major-version 24)
-    (load (expand-file-name "emacs24-init.el" user-emacs-directory)))
+(when (= emacs-major-version 24)
+  (load (expand-file-name "emacs24-init.el" user-emacs-directory)))
 
-  ;; 'y or n' au lieu de 'yes or no'
-  (defalias 'yes-or-no-p 'y-or-n-p)
+;; 'y or n' au lieu de 'yes or no'
+(defalias 'yes-or-no-p 'y-or-n-p)
 
-  ;; Windmove modifier
-  (windmove-default-keybindings 'meta)
+;; Windmove modifier
+(windmove-default-keybindings 'meta)
 
-  ;; pipe the full buffer if no region is selected
-  (define-advice shell-command-on-region (:around (sh-reg start end &rest r) scr-on-buffer)
-    "If no region is active, call the shell-command-on-region on the all buffer"
-    (if (use-region-p)
-        (apply sh-reg start end r)
-      (apply sh-reg (point-min) (point-max) r)))
+;; pipe the full buffer if no region is selected
+(define-advice shell-command-on-region (:around (sh-reg start end &rest r) scr-on-buffer)
+  "If no region is active, call the shell-command-on-region on the all buffer"
+  (if (use-region-p)
+      (apply sh-reg start end r)
+    (apply sh-reg (point-min) (point-max) r)))
 
-  ;; Pas d'écran d'accueil si on ouvre un fichier
-  (when (> (length command-line-args) 1)
-    (setq inhibit-splash-screen t))
-  ) ;; eval-and-compile
+;; Pas d'écran d'accueil si on ouvre un fichier
+(when (> (length command-line-args) 1)
+  (setq inhibit-splash-screen t))
 
 ;; Custom settings
 (custom-set-variables
@@ -103,6 +103,8 @@
   ) ;; package
 
 (use-package el-get
+  ; el-get installe les paquets spécifiques mais comme pour package
+  ; on ne le charge qu'au premier démarrage.
   :if (featurep 'package)
   :init
   (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
