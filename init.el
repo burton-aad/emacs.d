@@ -155,6 +155,11 @@
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package cl
+  ;; Les fonctions de cl seront chargées à la demande
+  :commands every
+  )
+
 (use-package org
   :mode ("\\.org\\'" . org-mode)
 
@@ -293,10 +298,7 @@ Once called, this function will be replaced with the one from the evil package."
 (use-package yasnippet
   :defer t
   :commands yas-minor-mode
-
-  :init
-  (add-hook 'org-mode-hook #'yas-minor-mode)
-
+  :hook (org-mode . yas-minor-mode)
   :config
   (yas-reload-all)
   ) ;; yasnippet
