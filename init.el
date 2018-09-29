@@ -349,6 +349,11 @@ Once called, this function will be replaced with the one from the evil package."
   :bind (("C-=" . er/expand-region))
   ) ;; expand-region
 
+(use-package smart-tabs-mode
+  :config
+  (smart-tabs-insinuate 'c 'c++)
+  )
+
 
 
 ;; End of init : Gives the loading time
