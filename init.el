@@ -210,7 +210,6 @@
   ) ;; flx-ido
 
 (use-package smex
-  :after (ido-vertical-mode flx-ido)
   :bind (("M-x" . smex))
   :config
   (require 'ido-vertical-mode)
