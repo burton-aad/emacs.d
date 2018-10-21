@@ -42,6 +42,14 @@
 
 ;; Windmove modifier
 (windmove-default-keybindings 'meta)
+;; Certains shells utilise le prefix echap (^[ ou \e) pour le modificateur
+;; meta. L'esc-map est correcte pour la plupart des combinaisons mais les
+;; flèches ne fonctionnent pas toujours (comme avec urxvt...).
+(unless (display-graphic-p)
+  (define-key key-translation-map (kbd "ESC <up>")    (kbd "M-<up>"))
+  (define-key key-translation-map (kbd "ESC <down>")  (kbd "M-<down>"))
+  (define-key key-translation-map (kbd "ESC <right>") (kbd "M-<right>"))
+  (define-key key-translation-map (kbd "ESC <left>")  (kbd "M-<left>")))
 
 ;; pipe the full buffer if no region is selected
 (define-advice shell-command-on-region (:around (sh-reg start end &rest r) scr-on-buffer)
@@ -358,7 +366,7 @@ Once called, this function will be replaced with the one from the evil package."
 
 
 ;; End of init : Gives the loading time
-(when window-system
+(when (display-graphic-p)
   (let ((elapsed (float-time (time-subtract (current-time)
                                             emacs-start-time))))
     (message "Loading %s...done (%.3fs)" load-file-name elapsed))
