@@ -363,6 +363,9 @@ Once called, this function will be replaced with the one from the evil package."
   (smart-tabs-insinuate 'c 'c++)
   )
 
+(use-package cmake-mode
+  :mode "CMakeLists.txt"
+  ) ;; cmake-mode
 
 
 ;; End of init : Gives the loading time
