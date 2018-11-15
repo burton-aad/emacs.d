@@ -367,6 +367,10 @@ Once called, this function will be replaced with the one from the evil package."
   :mode "CMakeLists.txt"
   ) ;; cmake-mode
 
+(use-package dockerfile-mode
+  :mode "/Dockerfile"
+  ) ;; dockerfile-mode
+
 
 ;; End of init : Gives the loading time
 (when (display-graphic-p)
