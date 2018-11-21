@@ -161,6 +161,26 @@
               ("b" . help-go-back))
   ) ;; help-mode
 
+(use-package conf-mode
+  :ensure nil
+  :defer t
+  :bind (:map conf-mode-map
+              ("C-c t" . my/conf-toogle-bool))
+  :config
+  (defun my/conf-toogle-bool ()
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (when (re-search-forward "=\\s-*\\(true\\|false\\|0\\|1\\)" (line-end-position) t)
+      ;; (message (match-string 1))
+      (replace-match (pcase (downcase (match-string 1))
+                       ("true" "false")
+                       ("false" "true")
+                       ("0" "1")
+                       ("1" "0"))
+                     nil nil nil 1))))
+  ) ;; conf-mode
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package cl
