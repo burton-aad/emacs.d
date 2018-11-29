@@ -337,14 +337,19 @@ Once called, this function will be replaced with the one from the evil package."
   ) ;; macrostep
 
 (use-package auto-complete
+  :bind (:map ac-mode-map
+              ("M-/" . auto-complete))
   ;; :bind (("M-/" . auto-complete))
 
-  :config
+  :init
   (require 'auto-complete-config)
   (ac-config-default)
+  (global-auto-complete-mode t)
+
+  :config
   (setq ac-use-menu-map t)
-  ;; (setq ac-auto-start nil)
-  ;; (ac-set-trigger-key "M-/")
+  (setq ac-auto-start nil)
+  (ac-set-trigger-key "M-/")
   ) ;; auto-complete
 
 (use-package ztree
