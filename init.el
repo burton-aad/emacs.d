@@ -288,6 +288,8 @@
     (let* ((rev (magit-branch-or-commit-at-point))
            (file (magit-read-file-from-rev rev "Find file")))
       (switch-to-buffer (magit-find-file-noselect rev file))))
+
+  (setq magit-diff-refine-hunk t)
   ) ;; magit
 
 (use-package powerline
