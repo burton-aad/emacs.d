@@ -62,6 +62,9 @@
 (when (> (length command-line-args) 1)
   (setq inhibit-splash-screen t))
 
+;; Retire l'indentation automatique (electric indent) sur la touche entrée
+(setq electric-indent-chars (remq ?\n electric-indent-chars))
+
 ;; Custom settings
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
