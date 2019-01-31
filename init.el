@@ -81,7 +81,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -403,6 +403,9 @@ Once called, this function will be replaced with the one from the evil package."
   :mode "/Dockerfile"
   ) ;; dockerfile-mode
 
+(use-package rust-mode
+  :mode "\\.rs\\'"
+  ) ;; rust-mode
 
 ;; End of init : Gives the loading time
 (when (display-graphic-p)
