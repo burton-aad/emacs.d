@@ -215,8 +215,10 @@
 
 (use-package cc-mode
   :defer t
-  :init
+  :config
   (setq c-basic-offset tab-width)
+  (setcdr (assoc 'other c-default-style) "linux")
+  (c-set-offset 'innamespace 0)
   ) ;; cc-mode
 
 (use-package smerge-mode
