@@ -81,7 +81,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -125,7 +125,8 @@
   ) ; el-get
 
 
-;; Paquets internes de emacs (pas de 'ensure' pour ne pas les modifier)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;; Paquets internes de emacs (pas de 'ensure' pour ne pas les modifier)
 (use-package sh-mode
   :ensure nil
   :defer t
@@ -185,6 +186,7 @@
   ) ;; conf-mode
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Autre paquets
 
 (use-package cl
   ;; Les fonctions de cl seront chargées à la demande
@@ -406,6 +408,11 @@ Once called, this function will be replaced with the one from the evil package."
 (use-package rust-mode
   :mode "\\.rs\\'"
   ) ;; rust-mode
+
+(use-package iedit
+  :bind ("C-;" . iedit-mode)
+  ) ;; help-mode
+
 
 ;; End of init : Gives the loading time
 (when (display-graphic-p)
