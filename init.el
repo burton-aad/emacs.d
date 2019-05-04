@@ -1,3 +1,5 @@
+;;; init.el --- -*- lexical-binding: t; coding:utf-8; fill-column: 120 -*-
+
 (defconst emacs-start-time (current-time))
 
 (prefer-coding-system 'utf-8-unix)
@@ -93,7 +95,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "outline" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
  '(cursor ((t (:background "red")))))
 
 ;; Variables pour retirer les avertissements sur certaines fonctions
