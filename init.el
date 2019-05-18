@@ -89,7 +89,8 @@
  '(scroll-error-top-bottom t)
  '(scroll-preserve-screen-position t)
  '(tab-width 4)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(visible-cursor nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
