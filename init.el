@@ -83,7 +83,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -416,6 +416,14 @@ Once called, this function will be replaced with the one from the evil package."
   :bind ("C-;" . iedit-mode)
   ) ;; help-mode
 
+(use-package highlight-indent-guides
+  :defer t
+  :commands highlight-indent-guides-mode
+  :hook (python-mode . highlight-indent-guides-mode)
+  :config
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-responsive 'top)
+  ) ;; highlight-indent-guides
 
 ;; End of init : Gives the loading time
 (when (display-graphic-p)
