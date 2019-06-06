@@ -136,18 +136,7 @@
   :init
   (setq sh-basic-offset 2)
   (setq sh-indentation 2)
-  (add-hook 'sh-mode-hook (lambda () (setq indent-tabs-mode nil)))
   ) ;; sh-mode
-
-(use-package elisp-mode
-  :ensure nil
-  :defer t
-  :init
-  (defun my/elisp-mode-hook ()
-    (setq indent-tabs-mode nil))
-
-  (add-hook 'emacs-lisp-mode-hook 'my/elisp-mode-hook)
-  ) ;; elisp-mode
 
 (use-package cua-mode
   :ensure nil
@@ -200,6 +189,16 @@
               (    "<=" . ?≤)))
       (prettify-symbols-mode)))
   ) ;; prettify-symbols-mode
+
+(use-package indent-tabs-nil
+  ; Special false package to place indent-tabs-mode
+  ; to nil on some program modes
+  :no-require t
+  :hook (sh-mode emacs-lisp-mode)
+  :init
+  (defun indent-tabs-nil ()
+    (setq indent-tabs-mode nil))
+  ) ;; indent-tabs-nil
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Autre paquets
