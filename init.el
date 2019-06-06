@@ -188,6 +188,19 @@
                      nil nil nil 1))))
   ) ;; conf-mode
 
+(use-package prettify-symbols-mode
+  :ensure nil
+  :hook ((emacs-lisp-mode python-mode) . my/prettify-symbol-hook)
+  :init
+  (defun my/prettify-symbol-hook ()
+    (progn
+      (setq prettify-symbols-alist
+            '(("lambda" . ?λ)
+              (    ">=" . ?≥)
+              (    "<=" . ?≤)))
+      (prettify-symbols-mode)))
+  ) ;; prettify-symbols-mode
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Autre paquets
 
