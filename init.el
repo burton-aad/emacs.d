@@ -440,6 +440,7 @@ Once called, this function will be replaced with the one from the evil package."
 
 (use-package dockerfile-mode
   :mode "/Dockerfile"
+  :mode "\\.dockerfile\\'"
   ) ;; dockerfile-mode
 
 (use-package rust-mode
