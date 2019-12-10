@@ -281,6 +281,20 @@
   :if (version<= "24.4" emacs-version)
   :bind (("C-x C-b" . ibuffer))
 
+  :custom
+  ;; Increase the space for file name
+  (ibuffer-formats '((mark modified read-only " "
+                           (name 24 24 :left :elide)
+                           " "
+                           (size 9 -1 :right)
+                           " "
+                           (mode 16 16 :left :elide)
+                           " " filename-and-process)
+                     (mark " "
+                           (name 16 -1)
+                           " " filename)))
+  (ibuffer-eliding-string "…")
+
   :config
   ;; Switching to ibuffer puts the cursor on the most recent buffer
   (define-advice ibuffer (:around (ibuf &rest r) ibuffer-point-to-most-recent)
