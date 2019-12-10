@@ -78,6 +78,7 @@
  '(delete-selection-mode t)
  '(display-time-24hr-format t)
  '(display-time-mode t)
+ '(echo-keystrokes 0.1)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(mouse-yank-at-point t)
  '(package-enable-at-startup nil)
