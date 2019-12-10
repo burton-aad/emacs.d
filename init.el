@@ -310,9 +310,17 @@
 (use-package magit
   :bind (("C-x g s" . magit-status)
          ("C-x g l" . magit-log)
+         ("C-x g b" . magit-blame)
+         ("C-x g g" . magit-blame) ;; vc compatible shortcut
          :map magit-log-mode-map
          ("C-x C-f" . my/magit-find-file)
-         ("C-x C-S-f" . magit-find-file))
+         ("C-x C-S-f" . magit-find-file)
+         :map magit-file-mode-map
+         ("C-x g" . nil))
+
+  :custom
+  (magit-diff-refine-hunk t "Highlight word change in diff")
+  (transient-display-buffer-action '(display-buffer-below-selected (side . bottom)) "Popup below magit buffer")
 
   :config
   (defun my/magit-find-file ()
