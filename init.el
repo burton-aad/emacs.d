@@ -280,7 +280,9 @@
 
 (use-package ibuffer
   :if (version<= "24.4" emacs-version)
-  :bind (("C-x C-b" . ibuffer))
+  :bind (("C-x C-b" . ibuffer)
+         :map ibuffer-mode-map
+         (":" . ibuffer-switch-format))
 
   :custom
   ;; Increase the space for file name
@@ -291,8 +293,8 @@
                            " "
                            (mode 16 16 :left :elide)
                            " " filename-and-process)
-                     (mark " "
-                           (name 16 -1)
+                     (mark modified read-only " "
+                           (name 24 -1)
                            " " filename)))
   (ibuffer-eliding-string "…")
 
