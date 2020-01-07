@@ -84,7 +84,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (counsel indent-tabs-nil highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -266,11 +266,17 @@
   ) ;; flx-ido
 
 (use-package smex
+  :disabled
   :bind (("M-x" . smex))
   :config
   (require 'ido-vertical-mode)
   (require 'flx-ido)
   ) ;; smex
+
+(use-package counsel
+  :bind (("M-x" . counsel-M-x)
+         ("C-x b" . counsel-switch-buffer))
+  ) ;; counsel
 
 (use-package paren
   :defer 2
