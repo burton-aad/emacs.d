@@ -17,3 +17,6 @@ ac-comphist.dat
 elpa
 var
 el-get
+transient
+tramp
+ido.last
