@@ -84,7 +84,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (counsel indent-tabs-nil highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (wgrep counsel indent-tabs-nil highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -460,6 +460,10 @@
   (setq highlight-indent-guides-method 'character)
   (setq highlight-indent-guides-responsive 'top)
   ) ;; highlight-indent-guides
+
+(use-package wgrep
+  :after grep
+  ) ;; wgrep
 
 ;; End of init : Gives the loading time
 (when (display-graphic-p)
