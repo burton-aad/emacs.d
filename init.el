@@ -191,6 +191,14 @@
       (prettify-symbols-mode)))
   ) ;; prettify-symbols-mode
 
+(use-package wdired
+  :ensure nil
+  :after dired
+  :custom
+  (wdired-allow-to-change-permissions t)
+  (wdired-create-parent-directories t)
+  ) ;; wdired
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; Faux paquets pour utliser certaines options
 
