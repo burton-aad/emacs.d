@@ -129,7 +129,7 @@
   ) ; el-get
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; Paquets internes de emacs (pas de 'ensure' pour ne pas les modifier)
 (use-package sh-mode
   :ensure nil
@@ -190,6 +190,9 @@
               (    "<=" . ?≤)))
       (prettify-symbols-mode)))
   ) ;; prettify-symbols-mode
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;; Faux paquets pour utliser certaines options
 
 (use-package indent-tabs-nil
   ; Special false package to place indent-tabs-mode
@@ -345,8 +348,6 @@
     (let* ((rev (magit-branch-or-commit-at-point))
            (file (magit-read-file-from-rev rev "Find file")))
       (switch-to-buffer (magit-find-file-noselect rev file))))
-
-  (setq magit-diff-refine-hunk t)
   ) ;; magit
 
 (use-package powerline
@@ -369,24 +370,10 @@
   ) ;; powerline
 
 (use-package evil
-  :defer t
-  :init
-  (defun evil-mode ()
-    "This is only a dummy function to make it available while not autoloaded.
-
-In the evil package the evil-mode function is not autoload so it is not
-available through the use-package :commands keyword. So I made this
-function to load evil and call the evil-mode so the evil package loading
-can be defer.
-
-Once called, this function will be replaced with the one from the evil package."
-    (interactive)
-    (require 'evil)
-    (evil-mode))
+  :commands evil-mode
   ) ;; evil
 
 (use-package yasnippet
-  :defer t
   :commands yas-minor-mode
   :hook (org-mode . yas-minor-mode)
   :config
@@ -394,7 +381,6 @@ Once called, this function will be replaced with the one from the evil package."
   ) ;; yasnippet
 
 (use-package macrostep
-  :defer t
   :commands macrostep-expand
   ) ;; macrostep
 
@@ -468,7 +454,6 @@ Once called, this function will be replaced with the one from the evil package."
   ) ;; help-mode
 
 (use-package highlight-indent-guides
-  :defer t
   :commands highlight-indent-guides-mode
   :hook (python-mode . highlight-indent-guides-mode)
   :config
