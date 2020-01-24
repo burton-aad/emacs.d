@@ -201,7 +201,14 @@
     (setq indent-tabs-mode nil))
   ) ;; indent-tabs-nil
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package non-window-emacs
+  ; Options pour emacs en mode non-window (-nw)
+  :no-require t
+  :if (not (display-graphic-p))
+  :bind (("C-v" . rectangle-mark-mode))
+  ) ;; non-window-emacs
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Autre paquets
 
 (use-package cl
