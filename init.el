@@ -203,8 +203,7 @@
 ;; ;;; Faux paquets pour utliser certaines options
 
 (use-package indent-tabs-nil
-  ; Special false package to place indent-tabs-mode
-  ; to nil on some program modes
+  ; Special false package to place indent-tabs-mode to nil on some program modes
   :no-require t
   :hook (sh-mode emacs-lisp-mode)
   :init
@@ -218,6 +217,32 @@
   :if (not (display-graphic-p))
   :bind (("C-v" . rectangle-mark-mode))
   ) ;; non-window-emacs
+
+(use-package toggle-visual-element
+  ; Vol éhonté à Protesilaos :) -> https://gitlab.com/protesilaos/dotemacs/blob/master/emacs-init.org
+  :no-require t
+  :init
+  (defmacro def-toggle-mode (mode-sym &optional docstring)
+    "Create toggle function for the mode"
+    (let* ((sym-name (symbol-name mode-sym))
+           (f-name (intern (concat "toggle/" sym-name)))
+           (callee (intern (concat sym-name "-mode"))))
+      `(defun ,f-name ()
+         ,(format "%s\nCall `%s' as the toggle" docstring (symbol-name callee))
+         (interactive)
+         (if (bound-and-true-p ,callee)
+             (,callee -1)
+           (,callee))
+         )))
+
+  (def-toggle-mode display-line-numbers
+    "Toggles the display of line numbers. Applies to all buffers.")
+  (def-toggle-mode whitespace
+    "Toggles the display of indentation and space characters.")
+
+  :bind (("C-c l" . toggle/display-line-numbers)
+         ("C-c i" . toggle/whitespace))
+  ) ;; toggle-visual-element
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Autre paquets
