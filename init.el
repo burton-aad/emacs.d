@@ -318,7 +318,7 @@
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
-         ("C-x b" . counsel-switch-buffer))
+         ("C-x b" . ivy-switch-buffer))
   ) ;; counsel
 
 (use-package paren
