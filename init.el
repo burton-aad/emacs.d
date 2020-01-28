@@ -319,6 +319,8 @@
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
          ("C-x b" . ivy-switch-buffer))
+  :config
+  (setf (alist-get 'counsel-M-x ivy-initial-inputs-alist) "")
   ) ;; counsel
 
 (use-package paren
