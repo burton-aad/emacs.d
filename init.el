@@ -318,7 +318,8 @@
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
-         ("C-x b" . ivy-switch-buffer))
+         ("C-x b" . ivy-switch-buffer)
+         ("C-x g f" . counsel-git))
   :config
   (setf (alist-get 'counsel-M-x ivy-initial-inputs-alist) "")
   ) ;; counsel
@@ -366,6 +367,7 @@
          ("C-x g l" . magit-log)
          ("C-x g b" . magit-blame)
          ("C-x g g" . magit-blame) ;; vc compatible shortcut
+         ("C-x g r" . vc-git-grep)
          :map magit-log-mode-map
          ("C-x C-f" . my/magit-find-file)
          ("C-x C-S-f" . magit-find-file)
@@ -502,7 +504,6 @@
 
 (use-package dired-subtree
   :after dired
-  :commands (dired-subtree-toggle dired-subtree-cycle)
   :bind (:map dired-mode-map
               ("TAB" . dired-subtree-toggle)
               ("<C-tab>" . dired-subtree-cycle))
