@@ -84,7 +84,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (wgrep counsel indent-tabs-nil highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (dired-subtree wgrep counsel indent-tabs-nil highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -499,6 +499,14 @@
 (use-package wgrep
   :after grep
   ) ;; wgrep
+
+(use-package dired-subtree
+  :after dired
+  :commands (dired-subtree-toggle dired-subtree-cycle)
+  :bind (:map dired-mode-map
+              ("TAB" . dired-subtree-toggle)
+              ("<C-tab>" . dired-subtree-cycle))
+  ) ;; dired-subtree
 
 ;; End of init : Gives the loading time
 (when (display-graphic-p)
