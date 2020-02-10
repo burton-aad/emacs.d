@@ -500,6 +500,8 @@
 
 (use-package wgrep
   :after grep
+  :custom
+  (wgrep-auto-save-buffer t)
   ) ;; wgrep
 
 (use-package dired-subtree
