@@ -76,6 +76,7 @@
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
  '(blink-cursor-mode nil)
  '(delete-selection-mode t)
+ '(dired-listing-switches "-alh")
  '(display-time-24hr-format t)
  '(display-time-mode t)
  '(echo-keystrokes 0.1)
