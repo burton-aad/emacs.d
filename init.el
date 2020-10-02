@@ -294,6 +294,7 @@
   ) ;; smerge-mode
 
 (use-package ido-vertical-mode
+  :disabled
   :defer t
   :config
   (ido-vertical-mode 1)
@@ -301,6 +302,7 @@
   ) ;; ido-vertical-mode
 
 (use-package flx-ido
+  :disabled
   :defer t
   :config
   (flx-ido-mode 1)
@@ -316,6 +318,11 @@
   (require 'ido-vertical-mode)
   (require 'flx-ido)
   ) ;; smex
+
+(use-package amx
+  ;; Package to sort ivy M-x entries
+  :after counsel
+  ) ;; amx
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
