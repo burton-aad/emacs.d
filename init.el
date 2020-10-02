@@ -81,6 +81,7 @@
  '(display-time-mode t)
  '(echo-keystrokes 0.1)
  '(ediff-split-window-function (quote split-window-horizontally))
+ '(frame-resize-pixelwise t)
  '(mouse-yank-at-point t)
  '(package-enable-at-startup nil)
  '(package-selected-packages
@@ -92,7 +93,8 @@
  '(scroll-preserve-screen-position t)
  '(tab-width 4)
  '(tool-bar-mode nil)
- '(visible-cursor nil))
+ '(visible-cursor nil)
+ '(window-resize-pixelwise t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
