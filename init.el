@@ -387,6 +387,7 @@
   :custom
   (magit-diff-refine-hunk t "Highlight word change in diff")
   (transient-display-buffer-action '(display-buffer-below-selected (side . bottom)) "Popup below magit buffer")
+  (magit-log-margin '(t "%Y-%m-%d %H:%M" magit-log-margin-width t 18))
 
   :config
   (defun my/magit-find-file ()
