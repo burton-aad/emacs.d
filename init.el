@@ -86,7 +86,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (dired-subtree wgrep counsel indent-tabs-nil highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
+    (dired-subtree wgrep ivy-rich counsel indent-tabs-nil highlight-indent-guides iedit dockerfile-mode cmake-mode rust-mode smart-tabs-mode flx-ido expand-region yaml-mode auctex yasnippet ido-vertical-mode web-mode ztree auto-complete macrostep cua evil powerline use-package smex magit)))
  '(ring-bell-function (quote ignore))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
@@ -333,6 +333,12 @@
   :config
   (setf (alist-get 'counsel-M-x ivy-initial-inputs-alist) "")
   ) ;; counsel
+
+(use-package ivy-rich
+  :after ivy counsel
+  :config
+  (ivy-rich-mode 1)
+  ) ;; ivy-rich
 
 (use-package paren
   :defer 2
