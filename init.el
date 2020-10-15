@@ -337,6 +337,7 @@
 (use-package ivy-rich
   :after ivy counsel
   :config
+  (require 'counsel) ; doit requérir counsel pour activer ivy-rich partout
   (ivy-rich-mode 1)
   ) ;; ivy-rich
 
