@@ -10,6 +10,10 @@
 # Undo-tree save-files
 *.~undo-tree
 
+# local custom file
+local-custom.el
+
+# auto generated files and folder
 eshell
 smex-items
 server

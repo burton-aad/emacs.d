@@ -103,6 +103,14 @@
  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
  '(cursor ((t (:background "red")))))
 
+;; local custom pour ne pas polluer l'init
+(let ((local-custom (expand-file-name "local-custom.el" user-emacs-directory)))
+  (if (not (file-exists-p local-custom))
+      (write-region "" nil local-custom))
+  (setq custom-file local-custom)
+  (load custom-file))
+
+
 ;; Variables pour retirer les avertissements sur certaines fonctions
 (put 'narrow-to-region 'disabled nil)
 
