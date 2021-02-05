@@ -44,14 +44,6 @@
 
 ;; Windmove modifier
 (windmove-default-keybindings 'meta)
-;; Certains shells utilise le prefix echap (^[ ou \e) pour le modificateur
-;; meta. L'esc-map est correcte pour la plupart des combinaisons mais les
-;; flèches ne fonctionnent pas toujours (comme avec urxvt...).
-(unless (display-graphic-p)
-  (define-key key-translation-map (kbd "ESC <up>")    (kbd "M-<up>"))
-  (define-key key-translation-map (kbd "ESC <down>")  (kbd "M-<down>"))
-  (define-key key-translation-map (kbd "ESC <right>") (kbd "M-<right>"))
-  (define-key key-translation-map (kbd "ESC <left>")  (kbd "M-<left>")))
 
 ;; pipe the full buffer if no region is selected
 (define-advice shell-command-on-region (:around (sh-reg start end &rest r) scr-on-buffer)
@@ -226,7 +218,18 @@
   ; Options pour emacs en mode non-window (-nw)
   :no-require t
   :if (not (display-graphic-p))
-  :bind (("C-v" . rectangle-mark-mode))
+  :bind (("C-v" . rectangle-mark-mode)
+         ("C-c ;" . comment-line)) ;; C-; is not possible in a terminal
+
+  :init
+  ;; Certains shells utilise le prefix echap (^[ ou \e) pour le modificateur
+  ;; meta. L'esc-map est correcte pour la plupart des combinaisons mais les
+  ;; flèches ne fonctionnent pas toujours (comme avec urxvt...).
+  (unless (display-graphic-p)
+    (define-key key-translation-map (kbd "ESC <up>")    (kbd "M-<up>"))
+    (define-key key-translation-map (kbd "ESC <down>")  (kbd "M-<down>"))
+    (define-key key-translation-map (kbd "ESC <right>") (kbd "M-<right>"))
+    (define-key key-translation-map (kbd "ESC <left>")  (kbd "M-<left>")))
   ) ;; non-window-emacs
 
 (use-package toggle-visual-element
