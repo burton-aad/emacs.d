@@ -262,9 +262,9 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Autre paquets
 
-(use-package cl
+(use-package cl-lib
   ;; Les fonctions de cl seront chargées à la demande
-  :commands every
+  :commands cl-every
   )
 
 (use-package org
@@ -275,8 +275,8 @@
   ;; de chaîne de caractères
   (put 'org-todo-keyword-faces 'safe-local-variable
        (lambda (val)
-         (and (every 'stringp (mapcar 'car val))
-              (every 'stringp (mapcar 'cdr val)))))
+         (and (cl-every 'stringp (mapcar 'car val))
+              (cl-every 'stringp (mapcar 'cdr val)))))
   (setq org-support-shift-select t)
   (setq org-src-fontify-natively t)
   (org-babel-do-load-languages 'org-babel-load-languages
