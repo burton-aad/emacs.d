@@ -65,7 +65,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
+ '(backup-directory-alist (quote ((".*" . (format "%s/%s" user-emacs-directory "backups")))))
  '(blink-cursor-mode nil)
  '(delete-selection-mode t)
  '(dired-listing-switches "-alh")
@@ -126,9 +126,9 @@
   ; on ne le charge qu'au premier démarrage.
   :if (featurep 'package)
   :init
-  (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+  (add-to-list 'load-path (format "%s/%s" user-emacs-directory "el-get/el-get"))
   :config
-  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+  (add-to-list 'el-get-recipe-path (format "%s/%s" user-emacs-directory "el-get-user/recipes"))
   (el-get 'sync (append '(el-get) (mapcar #'el-get-source-name el-get-sources)))
   ) ; el-get
 
@@ -388,7 +388,7 @@
       (ibuffer-jump-to-buffer recent-buffer-name)))
 
   ; Test de personalisation pour ibuffer
-  ;; (load "~/.emacs.d/ibuffer-test.el")
+  ;; (load (format "%s/%s" user-emacs-directory "ibuffer-test.el"))
   ) ;; ibuffer
 
 (use-package magit
