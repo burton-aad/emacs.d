@@ -417,25 +417,6 @@
       (switch-to-buffer (magit-find-file-noselect rev file))))
   ) ;; magit
 
-(use-package powerline
-  :if (string= system-type "windows-nt")
-
-  :init
-  (setq powerline-default-separator (quote wave))
-  (setq powerline-display-mule-info t)
-  (setq powerline-height nil)
-
-  :config
-  (powerline-center-theme)
-  (set-face-attribute 'mode-line nil
-                      :background "dark slate blue"
-                      :foreground "gray")
-  (set-face-attribute 'powerline-active1 nil
-                      :background "navy")
-  (set-face-attribute 'powerline-active2 nil
-                      :background "slate blue")
-  ) ;; powerline
-
 (use-package evil
   :commands evil-mode
   ) ;; evil
@@ -540,6 +521,20 @@
               ("TAB" . dired-subtree-toggle)
               ("<C-tab>" . dired-subtree-cycle))
   ) ;; dired-subtree
+
+(use-package smart-mode-line
+  ;; :disabled
+  :custom
+  (sml/theme 'dark)
+  (sml/modified-char "*")
+  (sml/vc-mode-show-backend t)
+
+  :custom-face
+  (sml/git ((t (:inherit sml/read-only))))
+
+  :config
+  (sml/setup)
+) ; smart-mode-line
 
 ;; End of init : Gives the loading time
 (when (display-graphic-p)
