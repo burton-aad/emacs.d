@@ -254,8 +254,12 @@
     "Toggles the display of line numbers. Applies to all buffers.")
   (def-toggle-mode whitespace
     "Toggles the display of indentation and space characters.")
+  (def-toggle-mode hl-line
+    "Toggles the highlight of the current line.")
 
-  :bind (("C-c l" . toggle/display-line-numbers)
+  :bind (("C-c l n" . toggle/display-line-numbers)
+         ("C-c l w" . toggle-truncate-lines)
+         ("C-c l h" . toggle/hl-line)
          ("C-c i" . toggle/whitespace))
   ) ;; toggle-visual-element
 
