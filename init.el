@@ -226,7 +226,7 @@
   ;; Certains shells utilise le prefix echap (^[ ou \e) pour le modificateur
   ;; meta. L'esc-map est correcte pour la plupart des combinaisons mais les
   ;; flèches ne fonctionnent pas toujours (comme avec urxvt...).
-  (unless (display-graphic-p)
+  (when (string-match "rxvt" (frame-parameter nil 'tty-type))
     (define-key key-translation-map (kbd "ESC <up>")    (kbd "M-<up>"))
     (define-key key-translation-map (kbd "ESC <down>")  (kbd "M-<down>"))
     (define-key key-translation-map (kbd "ESC <right>") (kbd "M-<right>"))
