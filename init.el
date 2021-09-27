@@ -526,6 +526,55 @@
               ("<C-tab>" . dired-subtree-cycle))
   ) ;; dired-subtree
 
+(use-package telephone-line
+  :disabled
+  :config
+  (defmacro flat-sep (width)
+    `(make-instance 'telephone-line-separator
+                    :axis-func #'identity
+                    :forced-width ,width
+                    :pattern-func #'telephone-line-row-pattern-solid-block))
+
+  ;; TODO in customize : mode-line-percent-position -> nil
+  (setq mode-line-percent-position nil)
+  (column-number-mode)
+
+  (defface my/tl-default
+    '((t (:weight bold :inherit mode-line)))
+    "Default face for inheritance"
+    :group 'telephone-line)
+
+  (defface my/tl-normal-file
+    '((t (:background "LimeGreen" :inherit my/tl-default)))
+    "Face used for standard file open"
+    :group 'telephone-line)
+
+  (defface my/tl-read-only
+    '((t (:background "DeepSkyBlue" :inherit my/tl-default)))
+    "Face used for read-only buffer"
+    :group 'telephone-line)
+
+  (defun my/telephone-line-file-face (active)
+    (cond ((not active) 'mode-line-inactive)
+          (buffer-read-only 'my/tl-read-only)
+          (t 'my/tl-normal-file)))
+
+  (add-to-list 'telephone-line-faces '(tfface . my/telephone-line-file-face))
+
+  (setq telephone-line-secondary-left-separator (flat-sep 5)
+        telephone-line-secondary-right-separator 'telephone-line-nil
+        telephone-line-primary-left-separator 'telephone-line-abs-left)
+  (setq telephone-line-lhs
+        '((accent   . (telephone-line-position-segment telephone-line-input-info-segment))
+          (tfface . (telephone-line-buffer-name-segment))
+          (accent . (telephone-line-vc-segment telephone-line-process-segment))))
+  (setq telephone-line-rhs
+        '((accent . (telephone-line-major-mode-segment))
+          (accent . (telephone-line-minor-mode-segment))
+          (accent . (telephone-line-misc-info-segment))))
+  (telephone-line-mode 1)
+ ) ;; telephone-line
+
 (use-package smart-mode-line
   ;; :disabled
   :custom
