@@ -31,7 +31,7 @@
     (progn
       ;; Put package install path into load path
       (mapc (lambda (path) (add-to-list 'load-path path))
-            (directory-files elpa t "^[^.].*-[0-9-]+")))))
+            (directory-files elpa t "^[^.].*-[0-9-.]+$")))))
 
 ;; Config spécifiques par machine
 (load (expand-file-name "local-init.el" user-emacs-directory))
