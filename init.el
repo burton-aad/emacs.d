@@ -403,9 +403,7 @@
          ("C-x g r" . vc-git-grep)
          :map magit-log-mode-map
          ("C-x C-f" . my/magit-find-file)
-         ("C-x C-S-f" . magit-find-file)
-         :map magit-file-mode-map
-         ("C-x g" . nil))
+         ("C-x C-S-f" . magit-find-file))
 
   :custom
   (magit-diff-refine-hunk t "Highlight word change in diff")
