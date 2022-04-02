@@ -540,17 +540,22 @@
   (column-number-mode)
 
   (defface my/tl-default
-    '((t (:weight bold :inherit mode-line)))
+    '((t (:foreground "white" :background "grey22" :inherit mode-line)))
+    "Default face for inheritance"
+    :group 'telephone-line)
+
+  (defface my/tl-default-inactive
+    '((t (:foreground "white" :background "grey8" :inherit mode-line-inactive)))
     "Default face for inheritance"
     :group 'telephone-line)
 
   (defface my/tl-normal-file
-    '((t (:background "LimeGreen" :inherit my/tl-default)))
+    '((t (:background "LimeGreen" :inherit (mode-line mode-line-emphasis))))
     "Face used for standard file open"
     :group 'telephone-line)
 
   (defface my/tl-read-only
-    '((t (:background "DeepSkyBlue" :inherit my/tl-default)))
+    '((t (:background "DeepSkyBlue" :inherit my/tl-normal-file)))
     "Face used for read-only buffer"
     :group 'telephone-line)
 
@@ -559,19 +564,20 @@
           (buffer-read-only 'my/tl-read-only)
           (t 'my/tl-normal-file)))
 
-  (add-to-list 'telephone-line-faces '(tfface . my/telephone-line-file-face))
+  (push '(tfface . my/telephone-line-file-face) telephone-line-faces)
+  (push '(tfdefault . (my/tl-default . my/tl-default-inactive)) telephone-line-faces)
 
   (setq telephone-line-secondary-left-separator (flat-sep 5)
         telephone-line-secondary-right-separator 'telephone-line-nil
         telephone-line-primary-left-separator 'telephone-line-abs-left)
   (setq telephone-line-lhs
-        '((accent   . (telephone-line-position-segment telephone-line-input-info-segment))
+        '((tfdefault . (telephone-line-position-segment telephone-line-input-info-segment))
           (tfface . (telephone-line-buffer-name-segment))
-          (accent . (telephone-line-vc-segment telephone-line-process-segment))))
+          (tfdefault . (telephone-line-vc-segment telephone-line-process-segment))))
   (setq telephone-line-rhs
-        '((accent . (telephone-line-major-mode-segment))
-          (accent . (telephone-line-minor-mode-segment))
-          (accent . (telephone-line-misc-info-segment))))
+        '((tfdefault . (telephone-line-major-mode-segment))
+          (tfdefault . (telephone-line-minor-mode-segment))
+          (tfdefault . (telephone-line-misc-info-segment))))
   (telephone-line-mode 1)
  ) ;; telephone-line
 
