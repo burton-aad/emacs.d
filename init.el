@@ -553,6 +553,9 @@
   (sml/setup)
 ) ; smart-mode-line
 
+;; tests pour la mode-line
+;; (load (expand-file-name "tests/mode-lines.el" user-emacs-directory))
+
 ;; End of init : Gives the loading time
 (when (display-graphic-p)
   (let ((elapsed (float-time (time-subtract (current-time)
