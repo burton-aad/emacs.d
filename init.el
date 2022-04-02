@@ -352,7 +352,7 @@
       (ibuffer-jump-to-buffer recent-buffer-name)))
 
   ; Test de personalisation pour ibuffer
-  ;; (load (format "%s/%s" user-emacs-directory "ibuffer-test.el"))
+  ;; (load (expand-file-name "tests/ibuffer-test.el" user-emacs-directory))
   ) ;; ibuffer
 
 (use-package magit
