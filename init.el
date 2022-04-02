@@ -311,51 +311,11 @@
               ("M-a" . smerge-keep-all))
   ) ;; smerge-mode
 
-(use-package ido-vertical-mode
-  :disabled
-  :defer t
-  :config
-  (ido-vertical-mode 1)
-  (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
-  ) ;; ido-vertical-mode
+;;; Completion frameworks
+;; (load (expand-file-name "completion/compl-smex.el" user-emacs-directory))
+(load (expand-file-name "completion/compl-ivy.el" user-emacs-directory))
+;; (load (expand-file-name "completion/compl-vertico.el" user-emacs-directory))
 
-(use-package flx-ido
-  :disabled
-  :defer t
-  :config
-  (flx-ido-mode 1)
-  ; enable flx highlight
-  (setq ido-enable-flex-matching t)
-  (setq ido-use-faces nil)
-  ) ;; flx-ido
-
-(use-package smex
-  :disabled
-  :bind (("M-x" . smex))
-  :config
-  (require 'ido-vertical-mode)
-  (require 'flx-ido)
-  ) ;; smex
-
-(use-package amx
-  ;; Package to sort ivy M-x entries
-  :after counsel
-  ) ;; amx
-
-(use-package counsel
-  :bind (("M-x" . counsel-M-x)
-         ("C-x b" . ivy-switch-buffer)
-         ("C-x g f" . counsel-git))
-  :config
-  (setf (alist-get 'counsel-M-x ivy-initial-inputs-alist) "")
-  ) ;; counsel
-
-(use-package ivy-rich
-  :after ivy counsel
-  :config
-  (require 'counsel) ; doit requérir counsel pour activer ivy-rich partout
-  (ivy-rich-mode 1)
-  ) ;; ivy-rich
 
 (use-package paren
   :defer 2
