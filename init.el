@@ -503,7 +503,7 @@
     :group 'telephone-line)
 
   (defface my/tl-default-inactive
-    '((t (:foreground "white" :background "grey8" :inherit mode-line-inactive)))
+    '((t (:background "grey8" :inherit mode-line-inactive)))
     "Default face for inheritance"
     :group 'telephone-line)
 
