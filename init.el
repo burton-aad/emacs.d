@@ -1,7 +1,5 @@
 ;;; init.el --- -*- lexical-binding: t; coding:utf-8; fill-column: 120 -*-
 
-(defconst emacs-start-time (current-time))
-
 (prefer-coding-system 'utf-8-unix)
 
 (pcase system-type
@@ -556,16 +554,4 @@
 ;; tests pour la mode-line
 ;; (load (expand-file-name "tests/mode-lines.el" user-emacs-directory))
 
-;; End of init : Gives the loading time
-(when (display-graphic-p)
-  (let ((elapsed (float-time (time-subtract (current-time)
-                                            emacs-start-time))))
-    (message "Loading %s...done (%.3fs)" load-file-name elapsed))
-
-  (add-hook 'after-init-hook
-            `(lambda ()
-               (let ((elapsed (float-time (time-subtract (current-time)
-                                                         emacs-start-time))))
-                 (message "Loading %s...done (%.3fs) [after-init]"
-                          ,load-file-name elapsed)))
-            t))
+;; End of init
