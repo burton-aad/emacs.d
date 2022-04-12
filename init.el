@@ -289,8 +289,8 @@
   :bind (:map smerge-mode-map
               ("M-n" . smerge-next)
               ("M-p" . smerge-prev)
-              ("M-m" . smerge-keep-mine)
-              ("M-o" . smerge-keep-other)
+              ("M-m" . smerge-keep-upper)
+              ("M-o" . smerge-keep-lower)
               ("M-a" . smerge-keep-all))
   ) ;; smerge-mode
 
