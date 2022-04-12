@@ -414,6 +414,10 @@
   :bind ("C-;" . iedit-mode)
   ) ;; help-mode
 
+(use-package multiple-cursors
+  :bind ("C-c m m" . mc/mark-all-like-this-dwim)
+  ) ;; multiple-cursors
+
 (use-package highlight-indent-guides
   :commands highlight-indent-guides-mode
   :hook (python-mode . highlight-indent-guides-mode)
