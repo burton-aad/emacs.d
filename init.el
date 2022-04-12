@@ -133,13 +133,6 @@
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; Paquets internes de emacs (pas de 'ensure' pour ne pas les modifier)
-(use-package sh-mode
-  :ensure nil
-  :defer t
-  :init
-  (setq sh-basic-offset 2)
-  (setq sh-indentation 2)
-  ) ;; sh-mode
 
 (use-package cua-mode
   :ensure nil
@@ -291,14 +284,6 @@
     (setq org-babel-python-command "py -3"))
   ) ;; org
 
-(use-package cc-mode
-  :defer t
-  :config
-  (setq c-basic-offset tab-width)
-  (setcdr (assoc 'other c-default-style) "linux")
-  (c-set-offset 'innamespace 0)
-  ) ;; cc-mode
-
 (use-package smerge-mode
   :defer t
   :bind (:map smerge-mode-map
@@ -314,6 +299,8 @@
 (load (expand-file-name "completion/compl-ivy.el" user-emacs-directory))
 ;; (load (expand-file-name "completion/compl-vertico.el" user-emacs-directory))
 
+
+;;; Edit configs
 
 (use-package paren
   :defer 2
@@ -414,27 +401,6 @@
   (setq ztree-dir-move-focus t)
   ) ;; ztree
 
-(use-package web-mode
-  :mode "\\.html\\'"
-  :mode "\\.php\\'"
-  :config
-  (setq web-mode-enable-auto-indentation nil)
-  ) ;; web-mode
-
-(use-package auctex
-  :defer t
-  :init
-  ;; Depuis le manuel de auctex.
-  ;; preview-latex n'est pas présent (peut-être été renommé en preview ?)
-  (load "auctex.el" nil t t)
-  ; (load "preview-latex.el" nil t t)
-  ) ;; auctex
-
-(use-package yaml-mode
-  :mode "\\.yaml\\'"
-  :mode "\\.yml\\'"
-  ) ;; yaml-mode
-
 (use-package expand-region
   :bind (("C-=" . er/expand-region))
   ) ;; expand-region
@@ -443,19 +409,6 @@
   :config
   (smart-tabs-insinuate 'c 'c++)
   )
-
-(use-package cmake-mode
-  :mode "CMakeLists.txt"
-  ) ;; cmake-mode
-
-(use-package dockerfile-mode
-  :mode "/Dockerfile"
-  :mode "\\.dockerfile\\'"
-  ) ;; dockerfile-mode
-
-(use-package rust-mode
-  :mode "\\.rs\\'"
-  ) ;; rust-mode
 
 (use-package iedit
   :bind ("C-;" . iedit-mode)
@@ -481,6 +434,62 @@
               ("TAB" . dired-subtree-toggle)
               ("<C-tab>" . dired-subtree-cycle))
   ) ;; dired-subtree
+
+
+;;; Prog Lang modes
+
+(use-package cc-mode
+  :defer t
+  :config
+  (setq c-basic-offset tab-width)
+  (setcdr (assoc 'other c-default-style) "linux")
+  (c-set-offset 'innamespace 0)
+  ) ;; cc-mode
+
+(use-package sh-mode
+  :ensure nil ; interne dans emacs
+  :defer t
+  :init
+  (setq sh-basic-offset 2)
+  (setq sh-indentation 2)
+  ) ;; sh-mode
+
+(use-package cmake-mode
+  :mode "CMakeLists.txt"
+  ) ;; cmake-mode
+
+(use-package dockerfile-mode
+  :mode "/Dockerfile"
+  :mode "\\.dockerfile\\'"
+  ) ;; dockerfile-mode
+
+(use-package rust-mode
+  :mode "\\.rs\\'"
+  ) ;; rust-mode
+
+(use-package yaml-mode
+  :mode "\\.yaml\\'"
+  :mode "\\.yml\\'"
+  ) ;; yaml-mode
+
+(use-package web-mode
+  :mode "\\.html\\'"
+  :mode "\\.php\\'"
+  :config
+  (setq web-mode-enable-auto-indentation nil)
+  ) ;; web-mode
+
+(use-package auctex
+  :defer t
+  :init
+  ;; Depuis le manuel de auctex.
+  ;; preview-latex n'est pas présent (peut-être été renommé en preview ?)
+  (load "auctex.el" nil t t)
+  ; (load "preview-latex.el" nil t t)
+  ) ;; auctex
+
+
+;;; Mode line
 
 (use-package telephone-line
   :disabled
