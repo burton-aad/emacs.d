@@ -194,6 +194,12 @@
   (wdired-create-parent-directories t)
   ) ;; wdired
 
+(use-package tab-bar
+  :ensure nil
+  :bind (("C-<next>" . tab-next)
+         ("C-<prior>" . tab-previous))
+  ) ;; tab-bar
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; Faux paquets pour utliser certaines options
 
