@@ -421,7 +421,8 @@
   ) ;; help-mode
 
 (use-package multiple-cursors
-  :bind ("C-c m m" . mc/mark-all-like-this-dwim)
+  :bind (("C-c m m" . mc/mark-all-like-this-dwim)
+         ("C-c m l" . mc/edit-lines))
   ) ;; multiple-cursors
 
 (use-package highlight-indent-guides
