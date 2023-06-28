@@ -342,6 +342,15 @@
       (funcall ibuf)
       (ibuffer-jump-to-buffer recent-buffer-name)))
 
+  (when (version<= "28" emacs-version)
+    (defvar my/update-hook-filter '("*Ibuffer*")
+      "List of buffer not updated by the diplay update hook")
+    (add-hook 'buffer-list-update-hook
+              (lambda ()
+                "Update display time on window selection"
+                (unless (member (buffer-name) my/update-hook-filter)
+                    (setq buffer-display-time (current-time))))))
+
   ; Test de personalisation pour ibuffer
   ;; (load (expand-file-name "tests/ibuffer-test.el" user-emacs-directory))
   ) ;; ibuffer
