@@ -157,9 +157,9 @@
   :ensure nil
   :defer t
   :bind (:map conf-mode-map
-              ("C-c t" . my/conf-toogle-bool))
+              ("C-c C-t" . my/conf-toggle-bool))
   :config
-  (defun my/conf-toogle-bool ()
+  (defun my/conf-toggle-bool ()
   (interactive)
   (save-excursion
     (beginning-of-line)
