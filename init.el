@@ -227,7 +227,8 @@
     (define-key key-translation-map (kbd "ESC <up>")    (kbd "M-<up>"))
     (define-key key-translation-map (kbd "ESC <down>")  (kbd "M-<down>"))
     (define-key key-translation-map (kbd "ESC <right>") (kbd "M-<right>"))
-    (define-key key-translation-map (kbd "ESC <left>")  (kbd "M-<left>")))
+    (define-key key-translation-map (kbd "ESC <left>")  (kbd "M-<left>"))
+    (custom-set-variables '(frame-background-mode 'dark)))
   ) ;; non-window-emacs
 
 (use-package toggle-visual-element
